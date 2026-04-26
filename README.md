@@ -28,16 +28,18 @@ It opens a local tldraw canvas, saves the drawing as a PNG under `/tmp`, and pri
 
 ## Install
 
-### From npm
+### From npm with Bun
 
-```sh
-npm install -g draw-prompt
-```
-
-`draw-prompt` is installed through npm, but it still requires Bun at runtime:
+`draw-prompt` is published through npm and runs on Bun. Install Bun first:
 
 ```sh
 curl -fsSL https://bun.sh/install | bash
+```
+
+Then install the CLI:
+
+```sh
+npm install -g draw-prompt
 ```
 
 ### From source
@@ -74,6 +76,65 @@ Draw something, click `Save`, and the command prints a path:
 ```
 
 stdout contains only that path. Status text, QR codes, and URLs go to stderr.
+
+## Agent Integrations
+
+The standard way to run shell commands in Claude Code and Codex is the `!` prefix:
+
+```text
+!draw-prompt
+```
+
+Then paste the returned image path back into the conversation as:
+
+```text
+@/tmp/draw-prompt-2026-04-26T11-55-32-325Z-09426c68.png
+```
+
+For a persistent phone or tablet canvas:
+
+```text
+!draw-prompt latest
+```
+
+The repo also includes project-local agent integrations:
+
+- Claude Code skill: `.claude/skills/draw-prompt/SKILL.md`
+- Codex skill: `.codex/skills/draw-prompt/SKILL.md`
+- Codex prompt command: `.codex/prompts/draw-prompt.md`
+
+In Claude Code, the skill creates `/draw-prompt`. Invoke it with:
+
+```text
+/draw-prompt
+/draw-prompt latest
+/draw-prompt open
+/draw-prompt stop
+```
+
+Behavior:
+
+- `/draw-prompt` runs one-shot drawing and returns `@/tmp/...png`.
+- `/draw-prompt latest` returns the latest saved remote image as `@/tmp/...png`.
+- `/draw-prompt open` shows the persistent remote URL and QR code again.
+- `/draw-prompt stop` stops the persistent remote server.
+
+To install globally for Claude Code:
+
+```sh
+mkdir -p ~/.claude/skills
+cp -R .claude/skills/draw-prompt ~/.claude/skills/
+```
+
+To install globally for Codex:
+
+```sh
+mkdir -p ~/.codex/skills ~/.codex/prompts
+cp -R .codex/skills/draw-prompt ~/.codex/skills/
+cp .codex/prompts/draw-prompt.md ~/.codex/prompts/
+```
+
+Claude Code skills are documented at https://code.claude.com/docs/en/skills.
 
 ## Remote Mode
 
@@ -201,44 +262,3 @@ bun run typecheck
 ```
 
 The CLI entrypoint is `src/cli.ts`. The served browser UI lives in `src/page.ts`.
-
-## Agent Integrations
-
-The repo includes project-local agent integrations:
-
-- Claude Code skill: `.claude/skills/draw-prompt/SKILL.md`
-- Codex skill: `.codex/skills/draw-prompt/SKILL.md`
-- Codex prompt command: `.codex/prompts/draw-prompt.md`
-
-In Claude Code, the skill creates `/draw-prompt`. Invoke it with:
-
-```text
-/draw-prompt
-/draw-prompt latest
-/draw-prompt open
-/draw-prompt stop
-```
-
-Behavior:
-
-- `/draw-prompt` runs one-shot drawing and returns `@/tmp/...png`.
-- `/draw-prompt latest` returns the latest saved remote image as `@/tmp/...png`.
-- `/draw-prompt open` shows the persistent remote URL and QR code again.
-- `/draw-prompt stop` stops the persistent remote server.
-
-To install globally for Claude Code:
-
-```sh
-mkdir -p ~/.claude/skills
-cp -R .claude/skills/draw-prompt ~/.claude/skills/
-```
-
-To install globally for Codex:
-
-```sh
-mkdir -p ~/.codex/skills ~/.codex/prompts
-cp -R .codex/skills/draw-prompt ~/.codex/skills/
-cp .codex/prompts/draw-prompt.md ~/.codex/prompts/
-```
-
-Claude Code skills are documented at https://code.claude.com/docs/en/skills.
