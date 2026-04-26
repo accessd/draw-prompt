@@ -10,6 +10,10 @@ Draw a quick sketch in a browser and send the saved PNG path back to your termin
 
 It opens a local tldraw canvas, saves the drawing as a PNG under `/tmp`, and prints only the file path to stdout.
 
+https://github.com/user-attachments/assets/10a29c33-3ad2-4c40-8189-d65cd25f07c3
+
+https://github.com/user-attachments/assets/6fc299d6-4812-463d-8902-6b39e328980a
+
 ## Features
 
 - Browser-based drawing with tldraw.
