@@ -1,0 +1,53 @@
+{
+	"name": "draw-prompt",
+	"version": "0.1.0",
+	"description": "Draw in a browser and print the saved PNG path for terminal prompts.",
+	"license": "MIT",
+	"type": "module",
+	"bin": {
+		"draw-prompt": "./bin/draw-prompt"
+	},
+	"files": [
+		"bin",
+		"src",
+		".claude/skills",
+		".codex/skills",
+		".codex/prompts",
+		"README.md",
+		"LICENSE"
+	],
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/accessd/draw-prompt.git"
+	},
+	"bugs": {
+		"url": "https://github.com/accessd/draw-prompt/issues"
+	},
+	"homepage": "https://github.com/accessd/draw-prompt#readme",
+	"keywords": [
+		"cli",
+		"terminal",
+		"drawing",
+		"tldraw",
+		"tmux",
+		"prompt"
+	],
+	"engines": {
+		"bun": ">=1.2.0"
+	},
+	"publishConfig": {
+		"access": "public"
+	},
+	"scripts": {
+		"start": "bun run src/cli.ts",
+		"typecheck": "tsc --noEmit"
+	},
+	"devDependencies": {
+		"@types/node": "^22.15.3",
+		"@types/qrcode-terminal": "^0.12.2",
+		"typescript": "^5.9.3"
+	},
+	"dependencies": {
+		"qrcode-terminal": "^0.12.0"
+	}
+}
