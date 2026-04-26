@@ -22,7 +22,7 @@ https://github.com/user-attachments/assets/10a29c33-3ad2-4c40-8189-d65cd25f07c3
 
 Remote mode on an iPad, paired with a tmux binding that pastes the saved image path into Claude Code:
 
-https://github.com/user-attachments/assets/98eb887b-0a2a-469b-b0b1-e66135e2d10b
+https://github.com/user-attachments/assets/13028a7a-a971-4bfb-8f94-da6e0d1d50d6
 
 1. `draw-prompt serve --remote` on the workstation, then scan the QR code to open the canvas on the iPad.
 2. Sketch on the iPad and click `Save`.
