@@ -10,6 +10,16 @@ Draw a quick sketch in a browser and send the saved PNG path back to your termin
 
 It opens a local tldraw canvas, saves the drawing as a PNG under `/tmp`, and prints only the file path to stdout.
 
+## Demo
+
+Remote mode on an iPad, paired with a tmux binding that pastes the saved image path into Claude Code:
+
+https://github.com/user-attachments/assets/98eb887b-0a2a-469b-b0b1-e66135e2d10b
+
+1. `draw-prompt serve --remote` on the workstation, then scan the QR code to open the canvas on the iPad.
+2. Sketch on the iPad and click `Save`.
+3. Press `Alt+4` in tmux to paste the latest saved image path into Claude Code.
+
 ## Features
 
 - Browser-based drawing with tldraw.
